@@ -50,11 +50,11 @@ client.on('message', async message => {
             .setColor("00ff00")
         );
     
-        sent.react('🚓');
-        sent.react('🚑');
-        sent.react('🚒');
-        sent.react('🐱‍👤');
-        sent.react('🔨')
+        await sent.react('🚓');
+        await sent.react('🚑');
+        await sent.react('🚒');
+        await sent.react('🐱‍👤');
+        await sent.react('🔨')
         settings.set(`${message.guild.id}-sollicitatie`, sent.id);
     
         message.channel.send("Sollicitatie Setup succesvol!")
