@@ -4,28 +4,30 @@ const enmap = require('enmap');
 const {token, prefix} = require('./config.json');
 const fs = require("fs");
 
-setInterval(() => {
-    const statuses = [
-        `trispcs.com`,
-        `Tickets`,
-        `Twitch.tv/Trispcs`,
-        `Trispcs Community`,
-        `tiktok.com/trispcs`,
-    ]
+client.on("ready", async () => {
 
-    const status = statuses[Math.floor(Math.random() * statuses.length)]
-    client.user.setActivity(status, { type: "WATCHING"}) // Can Be WATCHING, STREAMING, LISTENING
-}, 4500) // Second You Want to Change Status, This Cahnges Every 2 Seconds
+    console.log(`${client.user.username} is online.`);
+
+    setInterval(() => {
+        const statuses = [
+            `🎫 - Sollicitaties`,
+            `💬 - Berichten`,
+            `📌 - Hulpdiensten`,
+            `🔰 - 14 Staffleden`,
+            `👥 - 921 Leden`,
+        ]
+    
+        const status = statuses[Math.floor(Math.random() * statuses.length)]
+        client.user.setActivity(status, { type: "WATCHING"}) // Can Be WATCHING, STREAMING, LISTENING
+    }, 4500) // Second You Want to Change Status, This Cahnges Every 2 Seconds
+
+});
 
 const settings = new enmap({
     name: "settings",
     autoFetch: true,
     cloneLevel: "deep",
     fetchAll: true
-});
-
-client.on('ready', () => {
-    console.log('Succesvol herladen!')
 });
 
 client.on('message', async message => {
