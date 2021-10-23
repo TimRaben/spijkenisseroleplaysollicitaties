@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const client = new Discord.Client({partials: ["MESSAGE", "USER", "REACTION"]});
+const client = new discord.Client({partials: ["MESSAGE", "USER", "REACTION"]});
 const enmap = require('enmap');
 const {token, prefix} = require('./config.json');
 const fs = require("fs");
