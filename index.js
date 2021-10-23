@@ -43,22 +43,32 @@ client.on('message', async message => {
         let channel = message.mentions.channels.first();
         if(!channel) return message.reply("Verkeerd Commando! Gebruik: `!sollicitatie-setup #channel`");
     
-        let sent = channel.send(new discord.MessageEmbed()
+        var embed = new discord.MessageEmbed()
             .setTitle("Spijkenisse Roleplay - Sollicitaties")
             .setDescription("\nKlik op een Emoji onder dit bericht om te Solliciteren voor een bepaald Staatsbedrijf! Bekijk hieronder wat welke Emoji inhoud!\n\n🚓 **-** Politie\n🚑 **-** Ambulance\n🚒 **- Brandweer**\n🐱‍👤 **Dienst Speciale Interventies (DSI)\n🔨 **-** ANWB (Rijkswaterstaat)\n\nSolliciteer gerust wellicht zien wij jou binnenkort bij een van deze bedrijven!")
             .setFooter("Spijkenisse Roleplay - Hulpdiensten - Sollicitaties")
             .setColor("00ff00")
+
+        var channel = channel.send(new discord.MessageEmbed()
         );
+        
+        channel.send(embed);
+
+        var msg = await message.channel.send(embed)
+
     
-        await sent.react('🚓');
-        await sent.react('🚑');
-        await sent.react('🚒');
-        await sent.react('🐱‍👤');
-        await sent.react('🔨')
+        await msg.react('🚓');
+        await msg.react('🚑');
+        await msg.react('🚒');
+        await msg.react('🐱‍👤');
+        await msg.react('🔨');
+
         settings.set(`${message.guild.id}-sollicitatie`, sent.id);
     
         message.channel.send("Sollicitatie Setup succesvol!")
+
     }
+        
     
     if(command == "close", "done") {
         if(!args[0]) return message.channel.send("Geef een reden op!")
