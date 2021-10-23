@@ -49,10 +49,10 @@ client.on('message', async message => {
             .setFooter("Spijkenisse Roleplay - Hulpdiensten - Sollicitaties")
             .setColor("00ff00")
 
-        var message = channel.send(new discord.MessageEmbed()
+        var sollicitatiebericht = channel.send(new discord.MessageEmbed()
         );
 
-        message.send(embed);
+        sollicitatiebericht.send(embed);
 
         var msg = await message.channel.send(embed)
 
